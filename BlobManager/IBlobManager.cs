@@ -11,15 +11,22 @@ namespace BlobManager
     {
         bool CreateContainer(string name);
         Task<bool> CreateContainerAsync(string name);
+     
         bool GetOrCreateContainer(string name);
         Task<bool> GetOrCreateContainerAsync(string name);
+        
         bool DeleteContainer(string name);
         Task<bool> DeleteContainerAsync(string name);
-        //bool uploadBlob(string blob,string fileName);
+        
+        string UploadBlob(string containerName, string blobName, Stream stream);
         Task<string> UploadBlobAsync(string containerName, string blobName, Stream stream);
-        /// <summary>
-        /// it forces the creation of the container if not exists
-        /// </summary>
+        
+        string DoUploadBlob(string containerName, string blobName, Stream stream);
         Task<string> DoUploadBlobAsync(string containerName, string blobName, Stream stream);
+        
+        bool DownloadBlob(string containerName, string blobName, string target);
+        Task<bool> DownloadBlobAsync(string containerName, string blobName,string target);
+
+        List<string> listBlobs(string containerName);
     }
 }
